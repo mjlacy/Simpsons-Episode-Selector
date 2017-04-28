@@ -7,6 +7,8 @@ package simpsons.episode.selector;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
+import java.awt.datatransfer.*;
+import java.awt.Toolkit;
 /**
  *
  * @author Michael
@@ -211,5 +213,8 @@ public class SimpsonsEpisodeSelector extends JFrame implements ActionListener{
         int selection = (int) (Math.random() * episodeNames.length);
         episodeName.setText(episodeNames[selection]);
         seasonPlace.setText(seasonList[selection]);
+        StringSelection stringSelection = new StringSelection(episodeNames[selection]);
+        Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clpbrd.setContents(stringSelection, null);
     }    
 }
